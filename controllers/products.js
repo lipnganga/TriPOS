@@ -3,8 +3,6 @@ const productsmodel = require("../models/products");
 
 
 
-
-
 const AddProduct = (req, res) => {
     res.render("products");
 }
@@ -12,13 +10,13 @@ const AddProduct = (req, res) => {
 
 const postProduct = (req, res) => {
 
-    const { name, price, description } = req.body;
+    const { item, price, description } = req.body;
 
 
     console.log(req.body);
 
     const product = new productsmodel({
-        name,
+        item,
         price,
         description
     });
