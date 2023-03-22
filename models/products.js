@@ -2,7 +2,7 @@ const moongose = require('mongoose');
 const Schema = moongose.Schema;
 
 const ProductSchema = new Schema({
-    name: {
+    item: {
         type: String,
         required: [true, 'Name field is required']
     },
@@ -11,10 +11,12 @@ const ProductSchema = new Schema({
         required: [true, 'Price field is required']
     },
 
-    description: {
-        type: String,
+    quantity: {
+        type: Number,
     }
 });
+
+
 
 
 
