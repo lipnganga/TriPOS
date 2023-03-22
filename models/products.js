@@ -20,6 +20,8 @@ const ProductSchema = new Schema({
 
 
 
+
+
 const Product = moongose.model('product', ProductSchema);
 
 module.exports = Product;

@@ -1,0 +1,8 @@
+.background-image {
+    background-image: url('https://i.pinimg.com/564x/a5/ed/17/a5ed17be2ac70b0f951c367b51182e50.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 500px; /* set the height of the div to the desired height */
+  }
+  
+

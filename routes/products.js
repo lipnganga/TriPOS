@@ -10,6 +10,5 @@ router.get('/new', products.AddProduct);
 router.post('/new', products.postProduct);
 
 
-
-
 module.exports = router;
+

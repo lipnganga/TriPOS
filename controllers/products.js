@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const productsmodel = require("../models/products");
 
-
-
 const AddProduct = (req, res) => {
     res.render("products");
 }
@@ -10,7 +8,7 @@ const AddProduct = (req, res) => {
 
 const postProduct = (req, res) => {
 
-    const { item, price, description } = req.body;
+    const { item, price, quantity } = req.body;
 
 
     console.log(req.body);
@@ -18,7 +16,7 @@ const postProduct = (req, res) => {
     const product = new productsmodel({
         item,
         price,
-        description
+        quantity,
     });
 
     product.save()
@@ -38,10 +36,7 @@ const postProduct = (req, res) => {
 }
 
 
-
-
-
-
+    
 
 
 
@@ -49,3 +44,6 @@ module.exports = {
     AddProduct
     , postProduct
 }
+
+
+
