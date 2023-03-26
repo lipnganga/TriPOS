@@ -1,14 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const products = require('../controllers/products');
+const productController = require('../controllers/products');
 
-router.get('/', (req, res) => {
-    res.send('Products Page');
-});
+//render products page
+router.get('/', function (req, res) {
+    const products = [];
+    res.render('products', { products: products });
+}
+);
 
-router.get('/new', products.AddProduct);
-router.post('/new', products.postProduct);
 
+router.get('/', productController.getProducts);
+router.post('/', productController.postProduct);
+router.delete('/:cartItemId', productController.removeFromCart);
 
 module.exports = router;
-

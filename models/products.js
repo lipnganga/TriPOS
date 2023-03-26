@@ -1,27 +1,13 @@
-const moongose = require('mongoose');
-const Schema = moongose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const ProductSchema = new Schema({
-    item: {
-        type: String,
-        required: [true, 'Name field is required']
-    },
-    price: {  
-        type: Number,
-        required: [true, 'Price field is required']
-    },
-
-    quantity: {
-        type: Number,
-    }
+const productSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  price: { type: Number, required: true },
+  quantity: { type: Number, required: true }
 });
 
-
-
-
-
-
-
-const Product = moongose.model('product', ProductSchema);
+const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;

@@ -1,49 +1,45 @@
-const mongoose = require("mongoose");
-const productsmodel = require("../models/products");
+const Product = require('../models/products');
+const mongoose = require('mongoose');
 
-const AddProduct = (req, res) => {
-    res.render("products");
+const getProducts = async (req, res) => {
+    const products = await Product.find();
+
+    res.status(200).json({ products });
 }
 
+const postProduct = async (req, res) => {
+    const { name, price, description, image } = req.body;
 
-const postProduct = (req, res) => {
-
-    const { item, price, quantity } = req.body;
-
-
-    console.log(req.body);
-
-    const product = new productsmodel({
-        item,
+    const product = await Product.create({
+        _id: new mongoose.Types.ObjectId(),
+        name,
         price,
-        quantity,
+        description,
+        image
     });
 
-    product.save()
-        .then(data => {
-            res.json(data);
-        }
-        )
-        .catch(err => {
-            res.json(err);
-        }
-        )
-
-        
-    
-
-
+    res.status(201).json({ product });
 }
 
+const removeFromCart = async (req, res) => {
+    const { cartItemId } = req.params;
 
-    
+    const cartItem = await cartmodel.findByIdAndDelete(cartItemId);
 
+    if (!cartItem) {
+        return res.status(404).json({ message: "Cart item not found" });
+    }
 
+    res.status(200).json({ cartItem });
+}
 
 module.exports = {
-    AddProduct
-    , postProduct
+    getProducts,
+    postProduct,
+    removeFromCart
 }
+
+
 
 
 

@@ -43,26 +43,49 @@ const routes = require('./routes/index.js');
 app.use('/', require('./routes/index'));
 // app.use('/api', require('./routes/api'));
 app.use('/products', require('./routes/products'));
-//app.use('/users', require('./routes/users'));
-// cart 
-//app.use('/cart', require('./routes/cart'));
-app.get('/menu', (req, res) => {
-    res.render('menu');
-});
-
+app.use('/login', require('./routes/user'));
+app.use('/register', require('./routes/register'));
+app.use('cart', require('./routes/cart'));
 // login
 app.get('/login', (req, res) => {
     res.render('login');
 });
 
+app.get('/register', (req, res) => {
+    res.render('register');
+});
+
+//cart
+app.get('/cart', function (req, res) {
+    const cart = [];
+    res.render('cart', { cart: cart });
+});
 
 
-// register
-app.get("/"), function (req, res) {
-    res.render("register");
+
+//products
+
+app.get('/products', function (req, res) {
+    const products = [];
+    res.render('products', { products: products });
 }
+);
 
+//items
+app.get('/cart', function (req, res) {
+    var items = req.session.cart || [];
+    res.render('cart', { items: items });
+  });
+  
 
+app.get('/cart', function (req, res) {
+    var cart = req.session.cart || [];
+    var subtotal = 0;
+    for (var i = 0; i < cart.length; i++) {
+        subtotal += cart[i].price;
+    }
+    res.render('cart', { cart: cart, subtotal: subtotal });
+});
 
 
 // Showing home page
@@ -73,10 +96,7 @@ app.get("/", function (req, res) {
 // body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// define menu variable
-let menu = [
-    { name: 'Pizza', price: 10, quantity: 1 },
-];
+
 
  app.get('/menu', (req, res) => {
     res.render('menu');

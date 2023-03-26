@@ -1,20 +1,17 @@
-const { application } = require('express');
 const express = require('express');
 const router = express.Router();
 const register = require('../controllers/register');
 
+router
 
 
 // register 
-router.get('/register', register.register);
+router.get('/register', register.Adduser);
 router.post('/register', register.postRegister);
 
-//register
 
-app.get('/register', (req, res) => {
-    res.render('register');
-}
 
 module.exports = router;
+
 
 

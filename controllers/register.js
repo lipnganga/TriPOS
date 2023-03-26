@@ -1,21 +1,21 @@
 const mongoose = require('mongoose');
 const register = require('../models/register');
 
-const register = (req, res) => {
+const Adduser = (req, res) => {
     res.render('register');
-
 }
+
+
 
 const postRegister = (req, res) => {
 
-    const { name, email, password, password2 } = req.body;
+    const { name, email, password } = req.body;
     console.log(req.body);
 
     const user = new register({
         name,
         email,
-        password,
-        password2
+        password
     });
 
     user.save()
@@ -31,8 +31,10 @@ const postRegister = (req, res) => {
 }
 
 
+
+
 module.exports = {
-    register,
+    Adduser,
     postRegister
 
 }

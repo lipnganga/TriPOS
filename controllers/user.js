@@ -27,15 +27,6 @@ const postLogin = (req, res) => {
 }
 
 
-// login handle
-app.post('/login', (req, res, next) => {
-    passport.authenticate('local', {
-        successRedirect: '/products/new',
-        failureRedirect: '/login',
-        failureFlash: true
-    })(req, res, next);
-});
-
 
 
 
