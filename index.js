@@ -37,55 +37,38 @@ app.use(passport.session());
 
 
 
-
 // ROUTES
 const routes = require('./routes/index.js');
 app.use('/', require('./routes/index'));
 // app.use('/api', require('./routes/api'));
-app.use('/products', require('./routes/products'));
+//app.use('/products', require('./routes/products'));
 app.use('/login', require('./routes/user'));
-app.use('/register', require('./routes/register'));
+app.use('/register', require('./routes/user'));
 app.use('cart', require('./routes/cart'));
-// login
-app.get('/login', (req, res) => {
-    res.render('login');
-});
-
-app.get('/register', (req, res) => {
-    res.render('register');
-});
-
-//cart
-app.get('/cart', function (req, res) {
-    const cart = [];
-    res.render('cart', { cart: cart });
-});
-
+app.use('/menu', require('./routes/menuRoutes'));
 
 
 //products
+app.get('/products',function (req,res){
+    res.render('products')
+})
 
-app.get('/products', function (req, res) {
-    const products = [];
-    res.render('products', { products: products });
-}
-);
 
-//items
-app.get('/cart', function (req, res) {
-    var items = req.session.cart || [];
-    res.render('cart', { items: items });
-  });
-  
-
-app.get('/cart', function (req, res) {
-    var cart = req.session.cart || [];
-    var subtotal = 0;
-    for (var i = 0; i < cart.length; i++) {
-        subtotal += cart[i].price;
-    }
-    res.render('cart', { cart: cart, subtotal: subtotal });
+//login
+app.get('/user/login', (req, res) => {
+    res.render('login');
 });
+
+
+
+//register
+app.get('/user/register', (req, res) => {
+    res.render('register');
+});
+
+
+
+
 
 
 // Showing home page
@@ -93,19 +76,21 @@ app.get("/", function (req, res) {
     res.render("home");
 });
 
+// show about page
+app.get("/", function(req, res){
+    res.render("about");
+});
+
+
 // body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
 
- app.get('/menu', (req, res) => {
-    res.render('menu');
+app.get('/new/menu', function (req, res) {
+    var menu = { meals: [{}], beverages: [{}], snacks: [{}] };
+    res.render('menu', { menu: menu });
 });
-
-
-
-
-
 
 
 
