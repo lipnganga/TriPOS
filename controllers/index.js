@@ -3,7 +3,7 @@ const home = (req, res) => {
 }
 
 const  about = (req, res) => {
-    res.send('About Page');
+    res.render ('about')
 }
 
 
