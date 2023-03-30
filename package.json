@@ -1,5 +1,5 @@
 {
-  "homepage": "http://lipnganga.github.io/TriPOs",
+  
   "dependencies": {
     "body-parser": "^1.20.2",
     "dotenv": "^16.0.3",
@@ -15,7 +15,7 @@
   },
   "name": "TriPOS",
   "version": "1.0.0",
-  "main": "test.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
