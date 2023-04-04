@@ -19,8 +19,8 @@ const registerSchema = new mongoose.Schema({
 
 });
 
-const register = mongoose.model('register', registerSchema);
+const registers = mongoose.model('register', registerSchema);
 
-module.exports = register;
+module.exports = registers;
 
 

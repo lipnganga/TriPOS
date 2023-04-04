@@ -43,7 +43,8 @@ const routes = require('./routes/index.js');
 app.use('/', require('./routes/index'));
 // app.use('/api', require('./routes/api'));
 app.use('/products', require('./routes/products'));
-//app.use('/users', require('./routes/users'));
+app.use('/users', require('./routes/user'));
+app.use("/register", require('./routes/register'))
 // cart 
 //app.use('/cart', require('./routes/cart'));
 app.get('/menu', (req, res) => {

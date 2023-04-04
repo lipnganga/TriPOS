@@ -11,9 +11,9 @@ router.post('/register', register.postRegister);
 
 //register
 
-app.get('/register', (req, res) => {
+app.get('/', (req, res) => {
     res.render('register');
-}
+});
 
 module.exports = router;
 

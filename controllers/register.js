@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const register = require('../models/register');
+const registers = require('../models/register');
 
-const register = (req, res) => {
+const getregister = (req, res) => {
     res.render('register');
 
 }
@@ -32,7 +32,7 @@ const postRegister = (req, res) => {
 
 
 module.exports = {
-    register,
+    getregister,
     postRegister
 
 }
