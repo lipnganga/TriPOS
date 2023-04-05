@@ -12,15 +12,13 @@ const genToken = (id) => {
 }
 
 const loginUser = asyncHandler(async (req, res) => {
-    const { name, password } = req.body;
-    const user = await User.findOne({ email });
+    const {username, password } = req.body;
+    const user = await User.findOne({ username});
 
     if (user && (await user.matchPassword(password))) {
         res.json({
             _id: user._id,
-            name: user.name,
-            email: user.email,
-            isAdmin: user.isAdmin,
+            username: user.username,
             token: genToken(user._id),
         });
         } else {
